@@ -4,79 +4,64 @@ import json
 REPR_INDENT = 2
 
 
-class Energy:
+class Measure:
+    baseUnit = 'unitless'
+    conversions = {'unitless': 1}
+    encodeUnitLevels = ['unitless']
+    encodeUnitZero = 'unitless'
+
+    def __init__(self, amount, unit):
+        self.measure = amount*self.__class__.conversions[unit]
+
+    @classmethod
+    def zero(cls):
+        return cls(0, self.__class__.baseUnit)
+
+    def asUnit(self, unit):
+        return self.measure/self.__class__.conversions[unit]
+
+    def add(self, other):
+        return self.__class__(self.measure + other.measure, self.__class__.baseUnit)
+
+    def div(self, other):
+        return self.measure/other.measure
+
+    def multNumber(self, num):
+        return self.__class__(num*self.measure, self.__class__.baseUnit)
+
+    @classmethod
+    def decode(cls, obj):
+        return cls(obj['amount'], obj['unit'])
+
+    def encode(self):
+        amount = self.measure
+        unit = self.__class__.encodeUnitZero
+            
+        if self.measure != 0:
+            for u in self.__class__.encodeUnitLevels:
+                amount = self.measure/self.__class__.conversions[u]
+                unit = u
+                if amount >= 1:
+                    break
+
+        return {'amount': amount, 'unit': unit}
+
+    def __repr__(self):
+        return json.dumps(self.encode(), indent=REPR_INDENT)
+
+
+class Energy(Measure):
     baseUnit = 'kcal'
     conversions = {'kcal': 1, 'kj': 4.184}
-
-    def __init__(self, amount, unit):
-        self.measure = amount*Energy.conversions[unit]
-
-    def zero():
-        return Energy(0, Energy.baseUnit)
-
-    def asUnit(self, unit):
-        return self.measure/Energy.conversions[unit]
-
-    def addEnergy(self, other):
-        return Energy(self.measure + other.measure, Energy.baseUnit)
-
-    def divEnergy(self, other):
-        return self.measure/other.measure
-
-    def multNumber(self, num):
-        return Energy(num*self.measure, Energy.baseUnit)
-
-    def decode(obj):
-        return Energy(obj['amount'], obj['unit'])
-
-    def encode(self):
-        return {'amount': self.measure/Energy.conversions['kcal'],
-                'unit': 'kcal'}
-
-    def __repr__(self):
-        return json.dumps(self.encode(), indent=REPR_INDENT)
+    encodeUnitLevels = ['kcal']
+    encodeUnitZero = 'kcal'
 
 
-class Mass:
+class Mass(Measure):
     baseUnit = 'g'
     conversions = {'kg': 1000, 'g': 1, 'mg': 1e-3, 'mcg': 1e-6}
-
-    def __init__(self, amount, unit):
-        self.measure = amount*Mass.conversions[unit]
-
-    def zero():
-        return Mass(0, Mass.baseUnit)
-
-    def asUnit(self, unit):
-        return self.measure/Mass.conversions[unit]
-
-    def addMass(self, other):
-        return Mass(self.measure + other.measure, Mass.baseUnit)
-
-    def divMass(self, other):
-        return self.measure/other.measure
-
-    def multNumber(self, num):
-        return Mass(num*self.measure, Mass.baseUnit)
-
-    def decode(obj):
-        return Mass(obj['amount'], obj['unit'])
-
-    def encode(self):
-        if self.measure >= Mass.conversions['kg']:
-            unit = 'kg'
-        elif self.measure >= Mass.conversions['g'] or self.measure == 0:
-            unit = 'g'
-        elif self.measure >= Mass.conversions['mg']:
-            unit = 'mg'
-        else:
-            unit = 'mcg'
-
-        return {'amount': self.measure/Mass.conversions[unit],
-                'unit': unit}
-
-    def __repr__(self):
-        return json.dumps(self.encode(), indent=REPR_INDENT)
+    encodeUnitLevels = ['kg', 'g', 'mg', 'mcg']
+    encodeUnitZero = 'g'
 
 
 class Nutrient:
@@ -218,7 +203,7 @@ class Data:
 
     def asAmount(self, amount):
         data = Data()
-        factor = amount.divMass(self.servingSize)
+        factor = amount.div(self.servingSize)
 
         data.name = self.name
         data.desc = self.desc
@@ -247,8 +232,8 @@ class Data:
 
         data.name = self.name + ", " + other.name
         data.desc = self.desc + "\n" + other.desc
-        data.calories = self.calories.addEnergy(other.calories)
-        data.servingSize = self.servingSize.addMass(other.servingSize)
+        data.calories = self.calories.add(other.calories)
+        data.servingSize = self.servingSize.add(other.servingSize)
 
         data.fats = Data.__addSeries(self.fats, other.fats)
         data.carbs = Data.__addSeries(self.carbs, other.carbs)
@@ -263,7 +248,7 @@ class Data:
     def __addSeries(series1, series2):
         ret = {}
         for name, mass in series1.items():
-            ret[name] = mass.addMass(series2[name])
+            ret[name] = mass.add(series2[name])
         return ret
 
 
