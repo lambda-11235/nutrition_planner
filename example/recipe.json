@@ -1,0 +1,10 @@
+{
+  "potato": {
+    "amount": 200,
+    "unit": "g"
+  },
+  "carrot": {
+    "amount": 200,
+    "unit": "g"
+  }
+}

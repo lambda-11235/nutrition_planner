@@ -1,0 +1,266 @@
+{
+  "name": "carrot",
+  "description": "Carrots, raw",
+  "calories": {
+    "amount": 41.0,
+    "unit": "kcal"
+  },
+  "serving size": {
+    "amount": 100.0,
+    "unit": "g"
+  },
+  "fats": {
+    "total": {
+      "amount": 240.0,
+      "unit": "mg"
+    },
+    "cholesterol": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "saturated": {
+      "amount": 37.00000000000001,
+      "unit": "mg"
+    },
+    "trans": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "monounsaturated": {
+      "amount": 13.999999999999998,
+      "unit": "mg"
+    },
+    "polyunsaturated": {
+      "amount": 116.99999999999999,
+      "unit": "mg"
+    }
+  },
+  "carbohydrates": {
+    "total": {
+      "amount": 9.58,
+      "unit": "g"
+    },
+    "dietary fiber": {
+      "amount": 2.8,
+      "unit": "g"
+    },
+    "total sugars": {
+      "amount": 4.74,
+      "unit": "g"
+    },
+    "added sugars": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "sugar alcohol": {
+      "amount": 0.0,
+      "unit": "g"
+    }
+  },
+  "proteins": {
+    "total": {
+      "amount": 9.58,
+      "unit": "g"
+    }
+  },
+  "essential amino acids": {
+    "histidine": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "isoleucine": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "leucine": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "lysine": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "methionine": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "phenylalanine": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "threonine": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "tryptophan": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "valine": {
+      "amount": 0.0,
+      "unit": "g"
+    }
+  },
+  "nonessential amino acids": {
+    "alanine": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "arginine": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "asparagine": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "aspartic acid": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "cysteine": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "glutamic acid": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "glutamine": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "glycine": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "proline": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "serine": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "tyrosine": {
+      "amount": 0.0,
+      "unit": "g"
+    }
+  },
+  "minerals": {
+    "calcium": {
+      "amount": 33.0,
+      "unit": "mg"
+    },
+    "chloride": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "chromium": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "copper": {
+      "amount": 45.0,
+      "unit": "mcg"
+    },
+    "iodine": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "iron": {
+      "amount": 300.0,
+      "unit": "mcg"
+    },
+    "magnesium": {
+      "amount": 12.0,
+      "unit": "mg"
+    },
+    "manganese": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "molybdenum": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "phosphorus": {
+      "amount": 35.0,
+      "unit": "mg"
+    },
+    "potassium": {
+      "amount": 320.0,
+      "unit": "mg"
+    },
+    "selenium": {
+      "amount": 0.1,
+      "unit": "mcg"
+    },
+    "sodium": {
+      "amount": 69.0,
+      "unit": "mg"
+    },
+    "zinc": {
+      "amount": 240.00000000000003,
+      "unit": "mcg"
+    }
+  },
+  "vitamins": {
+    "biotin": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "choline": {
+      "amount": 8.8,
+      "unit": "mg"
+    },
+    "folic acid": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "niacin": {
+      "amount": 983.0,
+      "unit": "mcg"
+    },
+    "pantothenic acid": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "riboflavin": {
+      "amount": 58.0,
+      "unit": "mcg"
+    },
+    "thiamin": {
+      "amount": 66.00000000000001,
+      "unit": "mcg"
+    },
+    "vitamin a": {
+      "amount": 835.0,
+      "unit": "mcg"
+    },
+    "vitamin b-6": {
+      "amount": 138.00000000000003,
+      "unit": "mcg"
+    },
+    "vitamin b-12": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "vitamin c": {
+      "amount": 5.9,
+      "unit": "mg"
+    },
+    "vitamin d": {
+      "amount": 0.0,
+      "unit": "g"
+    },
+    "vitamin e": {
+      "amount": 660.0,
+      "unit": "mcg"
+    },
+    "vitamin k": {
+      "amount": 13.2,
+      "unit": "mcg"
+    }
+  }
+}
