@@ -35,7 +35,7 @@
       "unit": "mg"
     }
   },
-  "carbohydrates": {
+  "carbs": {
     "total": {
       "amount": 17.49,
       "unit": "g"
@@ -49,11 +49,11 @@
       "unit": "mg"
     },
     "added sugars": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "sugar alcohol": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     }
   },
@@ -63,7 +63,7 @@
       "unit": "g"
     }
   },
-  "essential amino acids": {
+  "essAminoAcids": {
     "histidine": {
       "amount": 35.0,
       "unit": "mg"
@@ -101,7 +101,7 @@
       "unit": "mg"
     }
   },
-  "nonessential amino acids": {
+  "nonessAminoAcids": {
     "alanine": {
       "amount": 63.0,
       "unit": "mg"
@@ -111,7 +111,7 @@
       "unit": "mg"
     },
     "asparagine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "aspartic acid": {
@@ -119,7 +119,7 @@
       "unit": "mg"
     },
     "cysteine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "glutamic acid": {
@@ -127,7 +127,7 @@
       "unit": "mg"
     },
     "glutamine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "glycine": {
@@ -153,11 +153,11 @@
       "unit": "mg"
     },
     "chloride": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "chromium": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "copper": {
@@ -165,7 +165,7 @@
       "unit": "mcg"
     },
     "iodine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "iron": {
@@ -181,7 +181,7 @@
       "unit": "mcg"
     },
     "molybdenum": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "phosphorus": {
@@ -207,7 +207,7 @@
   },
   "vitamins": {
     "biotin": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "choline": {

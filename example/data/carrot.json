@@ -23,7 +23,7 @@
       "unit": "mg"
     },
     "trans": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "monounsaturated": {
@@ -35,7 +35,7 @@
       "unit": "mg"
     }
   },
-  "carbohydrates": {
+  "carbs": {
     "total": {
       "amount": 9.58,
       "unit": "g"
@@ -49,11 +49,11 @@
       "unit": "g"
     },
     "added sugars": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "sugar alcohol": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     }
   },
@@ -63,87 +63,87 @@
       "unit": "g"
     }
   },
-  "essential amino acids": {
+  "essAminoAcids": {
     "histidine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "isoleucine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "leucine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "lysine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "methionine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "phenylalanine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "threonine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "tryptophan": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "valine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     }
   },
-  "nonessential amino acids": {
+  "nonessAminoAcids": {
     "alanine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "arginine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "asparagine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "aspartic acid": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "cysteine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "glutamic acid": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "glutamine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "glycine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "proline": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "serine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "tyrosine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     }
   },
@@ -153,11 +153,11 @@
       "unit": "mg"
     },
     "chloride": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "chromium": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "copper": {
@@ -165,7 +165,7 @@
       "unit": "mcg"
     },
     "iodine": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "iron": {
@@ -177,11 +177,11 @@
       "unit": "mg"
     },
     "manganese": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "molybdenum": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "phosphorus": {
@@ -207,7 +207,7 @@
   },
   "vitamins": {
     "biotin": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "choline": {
@@ -223,7 +223,7 @@
       "unit": "mcg"
     },
     "pantothenic acid": {
-      "amount": 0.0,
+      "amount": 0,
       "unit": "g"
     },
     "riboflavin": {

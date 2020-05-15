@@ -36,7 +36,7 @@ class Measure:
     def encode(self):
         amount = self.measure
         unit = self.__class__.encodeUnitZero
-            
+
         if self.measure != 0:
             for u in self.__class__.encodeUnitLevels:
                 amount = self.measure/self.__class__.conversions[u]
@@ -85,7 +85,7 @@ class Nutrient:
 
     def __repr__(self):
         return json.dumps(self.encode(), indent=REPR_INDENT)
-        
+
 
 
 class Data:
@@ -172,33 +172,34 @@ class Data:
         self.calories = Energy(0, 'kcal')
         self.servingSize = Mass(0, 'g')
 
-        self.fats = {}
+        self.nuts = {'fats': {},
+                     'carbs': {},
+                     'proteins': {},
+                     'essAminoAcids': {},
+                     'nonessAminoAcids': {},
+                     'minerals': {},
+                     'vitamins': {}}
+
         for fat in Data.fats:
-            self.fats[fat] = Mass(0, 'g')
+            self.nuts['fats'][fat] = Mass(0, 'g')
 
-        self.carbs = {}
         for carb in Data.carbs:
-            self.carbs[carb] = Mass(0, 'g')
+            self.nuts['carbs'][carb] = Mass(0, 'g')
 
-        self.proteins = {}
         for protein in Data.proteins:
-            self.proteins[protein] = Mass(0, 'g')
+            self.nuts['proteins'][protein] = Mass(0, 'g')
 
-        self.essAminoAcids = {}
         for essAminoAcid in Data.essAminoAcids:
-            self.essAminoAcids[essAminoAcid] = Mass(0, 'g')
+            self.nuts['essAminoAcids'][essAminoAcid] = Mass(0, 'g')
 
-        self.nonessAminoAcids = {}
         for nonessAminoAcid in Data.nonessAminoAcids:
-            self.nonessAminoAcids[nonessAminoAcid] = Mass(0, 'g')
+            self.nuts['nonessAminoAcids'][nonessAminoAcid] = Mass(0, 'g')
 
-        self.minerals = {}
         for mineral in Data.minerals:
-            self.minerals[mineral] = Mass(0, 'g')
+            self.nuts['minerals'][mineral] = Mass(0, 'g')
 
-        self.vitamins = {}
         for vitamin in Data.vitamins:
-            self.vitamins[vitamin] = Mass(0, 'g')
+            self.nuts['vitamins'][vitamin] = Mass(0, 'g')
 
 
     def asAmount(self, amount):
@@ -210,13 +211,8 @@ class Data:
         data.calories = self.calories.multNumber(factor)
         data.servingSize = self.servingSize.multNumber(factor)
 
-        data.fats = Data.__multSeries(self.fats, factor)
-        data.carbs = Data.__multSeries(self.carbs, factor)
-        data.proteins = Data.__multSeries(self.proteins, factor)
-        data.essAminoAcids = Data.__multSeries(self.essAminoAcids, factor)
-        data.nonessAminoAcids = Data.__multSeries(self.nonessAminoAcids, factor)
-        data.minerals = Data.__multSeries(self.minerals, factor)
-        data.vitamins = Data.__multSeries(self.vitamins, factor)
+        for category, series in self.nuts.items():
+            data.nuts[category] = Data.__multSeries(series, factor)
 
         return data
 
@@ -235,13 +231,8 @@ class Data:
         data.calories = self.calories.add(other.calories)
         data.servingSize = self.servingSize.add(other.servingSize)
 
-        data.fats = Data.__addSeries(self.fats, other.fats)
-        data.carbs = Data.__addSeries(self.carbs, other.carbs)
-        data.proteins = Data.__addSeries(self.proteins, other.proteins)
-        data.essAminoAcids = Data.__addSeries(self.essAminoAcids, other.essAminoAcids)
-        data.nonessAminoAcids = Data.__addSeries(self.nonessAminoAcids, other.nonessAminoAcids)
-        data.minerals = Data.__addSeries(self.minerals, other.minerals)
-        data.vitamins = Data.__addSeries(self.vitamins, other.vitamins)
+        for category, series in self.nuts.items():
+            data.nuts[category] = Data.__addSeries(series, other.nuts[category])
 
         return data
 
@@ -260,13 +251,8 @@ class Data:
         data.calories = Energy.decode(obj['calories'])
         data.servingSize = Mass.decode(obj['serving size'])
 
-        data.fats = Data.__decodeSeries(obj['fats'])
-        data.carbs = Data.__decodeSeries(obj['carbohydrates'])
-        data.proteins = Data.__decodeSeries(obj['proteins'])
-        data.essAminoAcids = Data.__decodeSeries(obj['essential amino acids'])
-        data.nonessAminoAcids = Data.__decodeSeries(obj['nonessential amino acids'])
-        data.minerals = Data.__decodeSeries(obj['minerals'])
-        data.vitamins = Data.__decodeSeries(obj['vitamins'])
+        for category, _ in data.nuts.items():
+            data.nuts[category] = Data.__decodeSeries(obj[category])
 
         return data
 
@@ -278,20 +264,15 @@ class Data:
 
 
     def encode(self):
-        nutEnc = []
+        enc = {'name': self.name,
+               'description': self.desc,
+               'calories': self.calories.encode(),
+               'serving size': self.servingSize.encode()}
 
-        return {'name': self.name,
-                'description': self.desc,
-                'calories': self.calories.encode(),
-                'serving size': self.servingSize.encode(),
+        for category, series in self.nuts.items():
+            enc[category] = Data.__encodeSeries(series)
 
-                'fats': Data.__encodeSeries(self.fats),
-                'carbohydrates': Data.__encodeSeries(self.carbs),
-                'proteins': Data.__encodeSeries(self.proteins),
-                'essential amino acids': Data.__encodeSeries(self.essAminoAcids),
-                'nonessential amino acids': Data.__encodeSeries(self.nonessAminoAcids),
-                'minerals': Data.__encodeSeries(self.minerals),
-                'vitamins': Data.__encodeSeries(self.vitamins)}
+        return enc
 
     def __encodeSeries(series):
         ret = {}

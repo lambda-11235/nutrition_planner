@@ -48,7 +48,7 @@ def getNutrientAmount(nutID):
     else:
         raise RuntimeError(f"unit {fcUnit} unrecognized for nutrient id {nutID}")
 
-    
+
 d = Data()
 d.name = args.name
 d.desc = foodData['description']
@@ -63,14 +63,14 @@ elif hasNutrient(1062):
 d.servingSize = Mass(100, 'g')
 
 
-def assignNutrients(series, idMap):
+def assignNutrients(category, idMap):
     for name, ids in idMap.items():
         for i in ids:
             if hasNutrient(i):
-                series[name] = getNutrientAmount(i)
+                d.nuts[category][name] = getNutrientAmount(i)
                 break
 
-assignNutrients(d.fats,
+assignNutrients('fats',
                 {'total': [1004, 1085],
                  'cholesterol': [1253],
                  'saturated': [1258],
@@ -78,16 +78,16 @@ assignNutrients(d.fats,
                  'monounsaturated': [1292],
                  'polyunsaturated': [1293]})
 
-assignNutrients(d.carbs,
+assignNutrients('carbs',
                 {'total': [1005, 1050],
                  'dietary fiber': [1079, 2033],
                  'total sugars': [1063, 2000],
                  'added sugars': [1235],
                  'sugar alcohol': [1086]})
 
-assignNutrients(d.proteins, {'total': [1005, 1050]})
+assignNutrients('proteins', {'total': [1005, 1050]})
 
-assignNutrients(d.essAminoAcids,
+assignNutrients('essAminoAcids',
                 {'histidine': [1221],
                  'isoleucine': [1212],
                  'leucine': [1213],
@@ -98,7 +98,7 @@ assignNutrients(d.essAminoAcids,
                  'tryptophan': [1210],
                  'valine': [1219]})
 
-assignNutrients(d.nonessAminoAcids,
+assignNutrients('nonessAminoAcids',
                 {'alanine': [1222],
                  'arginine': [1220],
                  'asparagine': [], # Not in database
@@ -111,7 +111,7 @@ assignNutrients(d.nonessAminoAcids,
                  'serine': [1227],
                  'tyrosine': [1218]})
 
-assignNutrients(d.minerals,
+assignNutrients('minerals',
                 {'calcium': [1087],
                  'chloride': [1088],
                  'chromium': [1096],
@@ -127,7 +127,7 @@ assignNutrients(d.minerals,
                  'sodium': [1093],
                  'zinc': [1095]})
 
-assignNutrients(d.vitamins,
+assignNutrients('vitamins',
                 {'biotin': [1176],
                  'choline': [1180],
                  'folic acid': [1186],
@@ -143,10 +143,10 @@ assignNutrients(d.vitamins,
                  'vitamin e': [1109]})
 
 # Vitamin K has 3 entries (3 types), so add them together
-d.vitamins['vitamin k'] = Mass.zero()
+d.nuts['vitamins']['vitamin k'] = Mass.zero()
 for nutID in [1183, 1184, 1185]:
     if hasNutrient(nutID):
         amount = getNutrientAmount(nutID)
-        d.vitamins['vitamin k'] = d.vitamins['vitamin k'].add(amount)
+        d.nuts['vitamins']['vitamin k'] = d.nuts['vitamins']['vitamin k'].add(amount)
 
 print(json.dumps(d.encode(), indent=args.json_indent))
