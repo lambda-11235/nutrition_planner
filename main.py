@@ -13,11 +13,18 @@ parser.add_argument('recipe', type=str,
     help="")
 parser.add_argument('--exclude-zero', action='store_true',
     help="don't report nutrients that aren't present")
+parser.add_argument('--exclude-micro', action='store_true',
+    help="don't report micro-nutrients")
 parser.add_argument('--json', action='store_true',
     help="output data in json format instead of as human readable")
 parser.add_argument('--json-indent', type=int, default=2,
     help="indent on JSON blocks (default %(default)s)")
 args = parser.parse_args()
+
+
+CAL_GRAM_FAT = 9
+CAL_GRAM_CARB = 4
+CAL_GRAM_PROTEIN = 4
 
 
 ingredients = {}
@@ -55,15 +62,20 @@ def printNut(label, category, nut, unit, optional=False):
         if not dv.isZero():
             pdv = meas.div(dv)*100
             output += f" - {pdv:.1f}% DV"
-        
+
     if not optional or amount > 0:
         print(output)
 
 if args.json:
     print(json.dumps(recipe.encode(), indent=args.json_indent))
 else:
-    print(f"Calories - {recipe.calories.asUnit('kcal')} kcal")
-    print(f"Serving Size: {recipe.servingSize.asUnit('g')} g")
+    cals = recipe.calories.asUnit('kcal')
+    percFats = 100*CAL_GRAM_FAT*recipe.nuts['fats']['total'].asUnit('g')/cals
+    percCarbs = 100*CAL_GRAM_CARB*recipe.nuts['carbs']['total'].asUnit('g')/cals
+    percProtein = 100*CAL_GRAM_PROTEIN*recipe.nuts['proteins']['total'].asUnit('g')/cals
+    print(f"Calories - {cals} kcal - {percFats:.1f}% Fat, {percCarbs:.1f}% Carbs, {percProtein:.1f}% Protein")
+
+    print(f"Serving Size - {recipe.servingSize.asUnit('g')} g")
 
     print()
 
@@ -83,6 +95,9 @@ else:
     printNut("\t\tSugar Alcohol", 'carbs', 'sugar alcohol', 'g', optional=args.exclude_zero)
 
     printNut("Protein", 'proteins', 'total', 'g')
+
+    if args.exclude_micro:
+        exit(0)
 
     print()
 
