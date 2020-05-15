@@ -14,6 +14,8 @@ parser.add_argument('fdc_id', type=int,
     help="")
 parser.add_argument('name', type=str,
     help="")
+parser.add_argument('--json-indent', type=int, default=2,
+    help="indent on JSON blocks (default %(default)s)")
 args = parser.parse_args()
 
 foodData = pd.read_csv(args.data_dir + "/food.csv", index_col="fdc_id")
@@ -145,6 +147,6 @@ d.vitamins['vitamin k'] = Mass.zero()
 for nutID in [1183, 1184, 1185]:
     if hasNutrient(nutID):
         amount = getNutrientAmount(nutID)
-        d.vitamins['vitamin k'] = d.vitamins['vitamin k'].addMass(amount)
+        d.vitamins['vitamin k'] = d.vitamins['vitamin k'].add(amount)
 
-print(d)
+print(json.dumps(d.encode(), indent=args.json_indent))

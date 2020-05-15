@@ -15,7 +15,7 @@ class Measure:
 
     @classmethod
     def zero(cls):
-        return cls(0, self.__class__.baseUnit)
+        return cls(0, cls.baseUnit)
 
     def asUnit(self, unit):
         return self.measure/self.__class__.conversions[unit]
