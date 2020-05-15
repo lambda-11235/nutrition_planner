@@ -85,7 +85,7 @@ assignNutrients('carbs',
                  'added sugars': [1235],
                  'sugar alcohol': [1086]})
 
-assignNutrients('proteins', {'total': [1005, 1050]})
+assignNutrients('proteins', {'total': [1003]})
 
 assignNutrients('essAminoAcids',
                 {'histidine': [1221],

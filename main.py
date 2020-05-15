@@ -17,15 +17,7 @@ parser.add_argument('--json', action='store_true',
     help="output data in json format instead of as human readable")
 parser.add_argument('--json-indent', type=int, default=2,
     help="indent on JSON blocks (default %(default)s)")
-parser.add_argument('--gen-blank-data', metavar='food_name', type=str,
-    help="generate a blank data table for an ingredient (implies --json)")
 args = parser.parse_args()
-
-if args.gen_blank_data is not None:
-    d = Data()
-    d.name = args.gen_blank_data
-    print(json.dumps(d.encode(), indent=args.json_indent))
-    exit(0)
 
 
 ingredients = {}
@@ -33,6 +25,11 @@ for f in glob.iglob(args.data_dir + "/*.json"):
     with open(f, 'r') as inp:
         ing = Data.decode(json.load(inp))
         ingredients[ing.name] = ing
+
+if 'daily_value' in ingredients:
+    dailyValue = ingredients['daily_value']
+else:
+    dailyValue = None
 
 
 recipe = Data()
@@ -50,13 +47,22 @@ with open(args.recipe, 'r') as inp:
 def printNut(label, category, nut, unit, optional=False):
     meas = recipe.nuts[category][nut]
     amount = meas.asUnit(unit)
+    output = f"{label} - {amount:.3f} {unit}"
+
+    if dailyValue is not None:
+        dv = dailyValue.nuts[category][nut]
+
+        if not dv.isZero():
+            pdv = meas.div(dv)*100
+            output += f" - {pdv:.1f}% DV"
+        
     if not optional or amount > 0:
-        print(f"{label}: {amount:.3f} {unit}")
+        print(output)
 
 if args.json:
     print(json.dumps(recipe.encode(), indent=args.json_indent))
 else:
-    print(f"Calories: {recipe.calories.asUnit('kcal')} kcal")
+    print(f"Calories - {recipe.calories.asUnit('kcal')} kcal")
     print(f"Serving Size: {recipe.servingSize.asUnit('g')} g")
 
     print()

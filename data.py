@@ -17,6 +17,9 @@ class Measure:
     def zero(cls):
         return cls(0, cls.baseUnit)
 
+    def isZero(self):
+        return self.measure == 0
+
     def asUnit(self, unit):
         return self.measure/self.__class__.conversions[unit]
 
