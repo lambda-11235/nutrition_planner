@@ -1,0 +1,266 @@
+{
+  "name": "daily_value",
+  "description": "From https://www.fda.gov/media/81606/download, https://www.accessdata.fda.gov/scripts/interactivenutritionfactslabel/assets/InteractiveNFL_Vitamins&MineralsChart_March2020.pdf",
+  "calories": {
+    "amount": 2000,
+    "unit": "kcal"
+  },
+  "serving size": {
+    "amount": 0,
+    "unit": "g"
+  },
+  "fats": {
+    "total": {
+      "amount": 65,
+      "unit": "g"
+    },
+    "cholesterol": {
+      "amount": 300,
+      "unit": "mg"
+    },
+    "saturated": {
+      "amount": 20,
+      "unit": "g"
+    },
+    "trans": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "monounsaturated": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "polyunsaturated": {
+      "amount": 0,
+      "unit": "g"
+    }
+  },
+  "carbs": {
+    "total": {
+      "amount": 300,
+      "unit": "g"
+    },
+    "dietary fiber": {
+      "amount": 25,
+      "unit": "g"
+    },
+    "total sugars": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "added sugars": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "sugar alcohol": {
+      "amount": 0,
+      "unit": "g"
+    }
+  },
+  "proteins": {
+    "total": {
+      "amount": 50,
+      "unit": "g"
+    }
+  },
+  "essAminoAcids": {
+    "histidine": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "isoleucine": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "leucine": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "lysine": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "methionine": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "phenylalanine": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "threonine": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "tryptophan": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "valine": {
+      "amount": 0,
+      "unit": "g"
+    }
+  },
+  "nonessAminoAcids": {
+    "alanine": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "arginine": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "asparagine": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "aspartic acid": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "cysteine": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "glutamic acid": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "glutamine": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "glycine": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "proline": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "serine": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "tyrosine": {
+      "amount": 0,
+      "unit": "g"
+    }
+  },
+  "minerals": {
+    "calcium": {
+      "amount": 1000,
+      "unit": "mg"
+    },
+    "chloride": {
+      "amount": 3400,
+      "unit": "mg"
+    },
+    "chromium": {
+      "amount": 120,
+      "unit": "mcg"
+    },
+    "copper": {
+      "amount": 2,
+      "unit": "mg"
+    },
+    "iodine": {
+      "amount": 150,
+      "unit": "mcg"
+    },
+    "iron": {
+      "amount": 18,
+      "unit": "mg"
+    },
+    "magnesium": {
+      "amount": 400,
+      "unit": "mg"
+    },
+    "manganese": {
+      "amount": 2,
+      "unit": "mg"
+    },
+    "molybdenum": {
+      "amount": 75,
+      "unit": "mcg"
+    },
+    "phosphorus": {
+      "amount": 1000,
+      "unit": "mg"
+    },
+    "potassium": {
+      "amount": 3500,
+      "unit": "mg"
+    },
+    "selenium": {
+      "amount": 70,
+      "unit": "mg"
+    },
+    "sodium": {
+      "amount": 2400,
+      "unit": "mg"
+    },
+    "zinc": {
+      "amount": 15,
+      "unit": "mg"
+    }
+  },
+  "vitamins": {
+    "biotin": {
+      "amount": 300,
+      "unit": "mcg"
+    },
+    "choline": {
+      "amount": 0,
+      "unit": "g"
+    },
+    "folic acid": {
+      "amount": 400,
+      "unit": "mcg"
+    },
+    "niacin": {
+      "amount": 20,
+      "unit": "mg"
+    },
+    "pantothenic acid": {
+      "amount": 10,
+      "unit": "mg"
+    },
+    "riboflavin": {
+      "amount": 1.7,
+      "unit": "mg"
+    },
+    "thiamin": {
+      "amount": 1.5,
+      "unit": "mg"
+    },
+    "vitamin a": {
+      "amount": 900,
+      "unit": "mcg"
+    },
+    "vitamin b-6": {
+      "amount": 2,
+      "unit": "mg"
+    },
+    "vitamin b-12": {
+      "amount": 6,
+      "unit": "mcg"
+    },
+    "vitamin c": {
+      "amount": 60,
+      "unit": "mg"
+    },
+    "vitamin d": {
+      "amount": 20,
+      "unit": "mcg"
+    },
+    "vitamin e": {
+      "amount": 15,
+      "unit": "mg"
+    },
+    "vitamin k": {
+      "amount": 120,
+      "unit": "mcg"
+    }
+  }
+}
