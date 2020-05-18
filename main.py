@@ -1,7 +1,9 @@
+#!/usr/bin/env python3
 
 import argparse
 import glob
 import json
+import sys
 
 from data import *
 
@@ -43,8 +45,7 @@ recipe = Data()
 with open(args.recipe, 'r') as inp:
     for name, amount in json.load(inp).items():
         if name not in ingredients:
-            print(f"Error: Ingredient '{name}' could not be found in path '{args.data_dir}'")
-            exit(1)
+            sys.exit(f"Error: Ingredient '{name}' could not be found in path '{args.data_dir}'")
 
         amount = Mass.decode(amount)
         ing = ingredients[name].asAmount(amount)
@@ -97,7 +98,7 @@ else:
     printNut("Protein", 'proteins', 'total', 'g')
 
     if args.exclude_micro:
-        exit(0)
+        sys.exit()
 
     print()
 
