@@ -11,7 +11,7 @@ parser = argparse.ArgumentParser(
     description='calculate nutrients for recipes')
 parser.add_argument('data_dir', type=str,
     help="")
-parser.add_argument('recipe', type=str,
+parser.add_argument('recipe', type=str, nargs="+",
     help="")
 parser.add_argument('--exclude-zero', action='store_true',
     help="don't report nutrients that aren't present")
@@ -42,14 +42,15 @@ else:
 
 
 recipe = Data()
-with open(args.recipe, 'r') as inp:
-    for name, amount in json.load(inp).items():
-        if name not in ingredients:
-            sys.exit(f"Error: Ingredient '{name}' could not be found in path '{args.data_dir}'")
+for rec in args.recipe:
+    with open(rec, 'r') as inp:
+        for name, amount in json.load(inp).items():
+            if name not in ingredients:
+                sys.exit(f"Error: Ingredient '{name}' could not be found in path '{args.data_dir}'")
 
-        amount = Mass.decode(amount)
-        ing = ingredients[name].asAmount(amount)
-        recipe = recipe.combine(ing)
+            amount = Mass.decode(amount)
+            ing = ingredients[name].asAmount(amount)
+            recipe = recipe.combine(ing)
 
 
 def printNut(label, category, nut, unit, optional=False):
